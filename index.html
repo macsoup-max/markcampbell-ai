@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Campbell — Technology Executive</title>
+    <meta name="description" content="25-year technology executive. Enterprise transformation, cybersecurity practice building, and AI adoption at scale.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f1117;
+            --bg-card: #161821;
+            --bg-card-hover: #1c1e2a;
+            --text: #e4e4e7;
+            --text-muted: #9ca3af;
+            --text-dim: #6b7280;
+            --accent: #3b82f6;
+            --accent-muted: rgba(59, 130, 246, 0.12);
+            --border: #23263a;
+            --metric-highlight: #f0f6ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            padding: 6rem 0 4rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-name {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .hero-thesis {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            max-width: 640px;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .hero-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: color 0.2s;
+        }
+
+        .hero-links a:hover {
+            color: var(--accent);
+        }
+
+        .hero-links .divider {
+            width: 1px;
+            height: 16px;
+            background: var(--border);
+        }
+
+        /* ── Metrics ── */
+        .metrics {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 500;
+        }
+
+        /* ── Career Arc ── */
+        .career {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .career-entry {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            align-items: start;
+        }
+
+        .career-entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .career-company {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            padding-top: 0.15rem;
+        }
+
+        .career-duration {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-top: 0.25rem;
+        }
+
+        .career-role {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .career-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .career-desc strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* ── Frameworks ── */
+        .frameworks {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .frameworks-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .framework-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.75rem;
+            transition: background 0.2s, border-color 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .framework-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent);
+        }
+
+        .framework-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.75rem;
+        }
+
+        .framework-desc {
+            font-size: 0.825rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .framework-link {
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-top: 1rem;
+            display: block;
+            font-weight: 500;
+        }
+
+        /* ── Published Thinking ── */
+        .published {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .published-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .published-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.75rem;
+            transition: background 0.2s, border-color 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .published-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent);
+        }
+
+        .published-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .published-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .published-desc {
+            font-size: 0.825rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            padding: 4rem 0 3rem;
+            text-align: center;
+        }
+
+        .footer-cta {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #60a5fa;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            letter-spacing: 0.02em;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 0 3rem;
+            }
+
+            .hero-name {
+                font-size: 1.75rem;
+            }
+
+            .hero-thesis {
+                font-size: 1.05rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .metric {
+                text-align: left;
+                display: flex;
+                align-items: baseline;
+                gap: 1rem;
+            }
+
+            .metric-number {
+                font-size: 2rem;
+                min-width: 100px;
+            }
+
+            .career-entry {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .frameworks-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .published-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── Hero ── -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-name">Mark Campbell</h1>
+            <p class="hero-thesis">
+                I build technology practices, teams, and platforms that help enterprises
+                navigate transformation at scale. Over 25 years, I've done this across
+                solutions architecture, cybersecurity, cloud, and AI adoption &mdash;
+                each time translating emerging capability into operational reality.
+            </p>
+            <div class="hero-links">
+                <a href="https://www.linkedin.com/in/themarkcampbell/" target="_blank" rel="noopener">LinkedIn</a>
+                <div class="divider"></div>
+                <!-- PLACEHOLDER: Replace with actual email or contact form -->
+                <a href="mailto:mark@markcampbell.ai">Contact</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Metrics ── -->
+    <section class="metrics">
+        <div class="container">
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-number">0 &rarr; 100+</div>
+                    <div class="metric-label">Cybersecurity practice built from zero</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-number">$16M &rarr; $49M</div>
+                    <div class="metric-label">P&amp;L growth under direct ownership</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-number">100+</div>
+                    <div class="metric-label">Enterprise GenAI production launches</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Career Arc ── -->
+    <section class="career">
+        <div class="container">
+            <div class="section-label">Career</div>
+
+            <div class="career-entry">
+                <div>
+                    <div class="career-company">Amazon Web Services</div>
+                    <div class="career-duration">4 years</div>
+                </div>
+                <div>
+                    <div class="career-role">Sr. Manager, Solutions Architecture &amp; AI Adoption</div>
+                    <div class="career-desc">
+                        Led a team of 9 solutions architects across a <strong>$380M enterprise portfolio</strong>.
+                        Transitioned to driving AI adoption with enterprise customers, launching
+                        <strong>100+ GenAI workloads</strong> into production. Operated at the intersection
+                        of technical solutioning and executive stakeholder alignment.
+                    </div>
+                </div>
+            </div>
+
+            <div class="career-entry">
+                <div>
+                    <div class="career-company">Deloitte</div>
+                    <div class="career-duration">5 years</div>
+                </div>
+                <div>
+                    <div class="career-role">Managing Director, Cybersecurity Practice</div>
+                    <div class="career-desc">
+                        Built the Florida cybersecurity practice <strong>from zero to 100+ practitioners</strong>.
+                        Full P&amp;L ownership growing revenue from <strong>$16M to $49M</strong>.
+                        Led security strategy, risk advisory, and large-scale compliance engagements
+                        for Fortune 500 clients.
+                    </div>
+                </div>
+            </div>
+
+            <div class="career-entry">
+                <div>
+                    <div class="career-company">Accenture</div>
+                    <div class="career-duration">15 years</div>
+                </div>
+                <div>
+                    <div class="career-role">Senior Manager, Solutions Architecture</div>
+                    <div class="career-desc">
+                        Enterprise technology transformation and solutions architecture across
+                        <strong>$10M&ndash;$30M programs</strong>. Delivered large-scale system integrations,
+                        infrastructure modernization, and technology strategy for global enterprises.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Strategic Frameworks ── -->
+    <section class="frameworks">
+        <div class="container">
+            <div class="section-label">Strategic Frameworks</div>
+            <div class="frameworks-grid">
+                <!-- PLACEHOLDER: Replace href with actual URLs -->
+                <a href="#" class="framework-card">
+                    <div class="framework-title">AI Progression Framework</div>
+                    <div class="framework-desc">
+                        How professionals and organizations advance AI capabilities
+                        from experimentation through operational maturity.
+                    </div>
+                    <span class="framework-link">Explore &rarr;</span>
+                </a>
+                <a href="#" class="framework-card">
+                    <div class="framework-title">Three Domains of AI</div>
+                    <div class="framework-desc">
+                        A structural model for understanding where AI creates value
+                        across infrastructure, application, and adoption layers.
+                    </div>
+                    <span class="framework-link">Explore &rarr;</span>
+                </a>
+                <a href="#" class="framework-card">
+                    <div class="framework-title">PAI Architecture</div>
+                    <div class="framework-desc">
+                        A three-layer personal AI operating system integrating
+                        strategic planning, tactical execution, and persistent memory.
+                    </div>
+                    <span class="framework-link">Explore &rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Published Thinking ── -->
+    <section class="published">
+        <div class="container">
+            <div class="section-label">Published Thinking</div>
+            <div class="published-grid">
+                <!-- PLACEHOLDER: Replace with actual episode links and descriptions -->
+                <a href="#" class="published-card">
+                    <div class="published-tag">Video</div>
+                    <div class="published-title">Episode 1 Title</div>
+                    <div class="published-desc">
+                        Brief description of what this episode covers and the key insight.
+                    </div>
+                </a>
+                <a href="#" class="published-card">
+                    <div class="published-tag">Video</div>
+                    <div class="published-title">Episode 2 Title</div>
+                    <div class="published-desc">
+                        Brief description of what this episode covers and the key insight.
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-cta">Building something in cloud, AI, or enterprise transformation?</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/themarkcampbell/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+                <a href="mailto:mark@markcampbell.ai">Get in touch</a>
+            </div>
+            <p class="footer-note">&copy; 2026 Mark Campbell</p>
+        </div>
+    </footer>
+
+</body>
+</html>
