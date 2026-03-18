@@ -7,19 +7,24 @@
     <meta name="description" content="25-year technology executive. Enterprise transformation, cybersecurity practice building, and AI adoption at scale.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0f1117;
-            --bg-card: #161821;
-            --bg-card-hover: #1c1e2a;
+            --bg: #0a0b10;
+            --bg-subtle: #0f1018;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(255, 255, 255, 0.06);
             --text: #e4e4e7;
             --text-muted: #9ca3af;
             --text-dim: #6b7280;
-            --accent: #3b82f6;
-            --accent-muted: rgba(59, 130, 246, 0.12);
-            --border: #23263a;
-            --metric-highlight: #f0f6ff;
+            --accent: #007AFF;
+            --accent-light: #3395FF;
+            --accent-glow: rgba(0, 122, 255, 0.15);
+            --accent-warm: #f59e0b;
+            --border: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(0, 122, 255, 0.4);
+            --gradient-start: #007AFF;
+            --gradient-end: #3395FF;
         }
 
         * {
@@ -29,71 +34,146 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 860px;
+            max-width: 960px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
+        /* ── Ambient background ── */
+        .ambient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .ambient::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 122, 255, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .ambient::after {
+            content: '';
+            position: absolute;
+            bottom: 20%;
+            left: -15%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 122, 255, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        section, footer {
+            position: relative;
+            z-index: 1;
+        }
+
         /* ── Hero ── */
         .hero {
-            padding: 6rem 0 4rem;
-            border-bottom: 1px solid var(--border);
+            padding: 8rem 0 5rem;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-light);
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--accent);
         }
 
         .hero-name {
-            font-size: 2.25rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.5rem;
             color: #fff;
+            line-height: 1.1;
+        }
+
+        .hero-name span {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-thesis {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 400;
             color: var(--text-muted);
-            max-width: 640px;
-            line-height: 1.7;
+            max-width: 620px;
+            line-height: 1.8;
             margin-bottom: 2.5rem;
         }
 
-        .hero-links {
-            display: flex;
-            gap: 1.5rem;
+        .hero-cta {
+            display: inline-flex;
             align-items: center;
-        }
-
-        .hero-links a {
-            color: var(--text-muted);
+            gap: 0.5rem;
+            color: var(--accent-light);
             text-decoration: none;
             font-size: 0.875rem;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 0.02em;
-            transition: color 0.2s;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--border-hover);
+            border-radius: 8px;
+            transition: all 0.3s;
+            background: var(--accent-glow);
         }
 
-        .hero-links a:hover {
-            color: var(--accent);
+        .hero-cta:hover {
+            background: rgba(0, 122, 255, 0.25);
+            border-color: var(--accent-light);
+            transform: translateY(-1px);
         }
 
-        .hero-links .divider {
-            width: 1px;
+        .hero-cta svg {
+            width: 16px;
             height: 16px;
-            background: var(--border);
+        }
+
+        /* ── Divider ── */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 0;
         }
 
         /* ── Metrics ── */
         .metrics {
-            padding: 4rem 0;
-            border-bottom: 1px solid var(--border);
+            padding: 5rem 0;
         }
 
         .metrics-grid {
@@ -104,215 +184,331 @@
 
         .metric {
             text-align: center;
+            padding: 2.5rem 1.5rem;
+            border-radius: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .metric:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 122, 255, 0.1);
+        }
+
+        .metric:hover::before {
+            opacity: 1;
         }
 
         .metric-number {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 800;
             color: #fff;
             letter-spacing: -0.03em;
-            line-height: 1;
-            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
         }
 
         .metric-label {
             font-size: 0.8rem;
             color: var(--text-dim);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
             font-weight: 500;
+            line-height: 1.5;
         }
 
         /* ── Career Arc ── */
         .career {
-            padding: 4rem 0;
-            border-bottom: 1px solid var(--border);
+            padding: 5rem 0;
         }
 
         .section-label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-dim);
-            font-weight: 600;
-            margin-bottom: 2rem;
+            letter-spacing: 0.15em;
+            color: var(--accent-light);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .career-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .career-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: linear-gradient(180deg, var(--accent), var(--border), var(--border));
         }
 
         .career-entry {
-            display: grid;
-            grid-template-columns: 140px 1fr;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-            align-items: start;
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
         }
 
         .career-entry:last-child {
             margin-bottom: 0;
         }
 
+        .career-entry::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 10px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 2px solid var(--accent);
+            z-index: 1;
+        }
+
+        .career-entry:first-child::before {
+            background: var(--accent);
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        .career-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
         .career-company {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            padding-top: 0.15rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
         }
 
         .career-duration {
             font-size: 0.75rem;
             color: var(--text-dim);
-            margin-top: 0.25rem;
+            font-weight: 500;
+            padding: 0.15rem 0.6rem;
+            background: var(--bg-card);
+            border-radius: 100px;
+            border: 1px solid var(--border);
         }
 
         .career-role {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--accent-light);
+            margin-bottom: 0.75rem;
         }
 
         .career-desc {
             font-size: 0.9rem;
             color: var(--text-muted);
             line-height: 1.7;
+            max-width: 580px;
         }
 
         .career-desc strong {
-            color: var(--text);
-            font-weight: 500;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* ── Cards (shared) ── */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 122, 255, 0.08);
+            background: var(--bg-card-hover);
+        }
+
+        .card:hover::after {
+            opacity: 1;
         }
 
         /* ── Frameworks ── */
         .frameworks {
-            padding: 4rem 0;
-            border-bottom: 1px solid var(--border);
+            padding: 5rem 0;
         }
 
         .frameworks-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .framework-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.75rem;
-            transition: background 0.2s, border-color 0.2s;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .framework-card:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--accent);
-        }
-
-        .framework-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 0.75rem;
-        }
-
-        .framework-desc {
-            font-size: 0.825rem;
-            color: var(--text-dim);
-            line-height: 1.6;
-        }
-
-        .framework-link {
-            font-size: 0.8rem;
-            color: var(--accent);
-            margin-top: 1rem;
-            display: block;
-            font-weight: 500;
-        }
-
-        /* ── Published Thinking ── */
-        .published {
-            padding: 4rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .published-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
         }
 
-        .published-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.75rem;
-            transition: background 0.2s, border-color 0.2s;
-            text-decoration: none;
-            color: inherit;
-            display: block;
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--accent-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
         }
 
-        .published-card:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--accent);
+        .card-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent-light);
         }
 
-        .published-tag {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--accent);
-            font-weight: 600;
+        .card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
             margin-bottom: 0.75rem;
         }
 
-        .published-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
+        .card-desc {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            line-height: 1.7;
+            flex: 1;
         }
 
-        .published-desc {
-            font-size: 0.825rem;
-            color: var(--text-dim);
-            line-height: 1.6;
+        .card-link {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            margin-top: 1.25rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: gap 0.2s;
+        }
+
+        .card:hover .card-link {
+            gap: 0.6rem;
+        }
+
+        /* ── Published Thinking ── */
+        .published {
+            padding: 5rem 0;
+        }
+
+        .published-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .card-tag {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            background: var(--accent-glow);
+            color: var(--accent-light);
         }
 
         /* ── Footer ── */
         .footer {
-            padding: 4rem 0 3rem;
+            padding: 5rem 0 3rem;
             text-align: center;
         }
 
         .footer-cta {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
+        .footer-sub {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
         }
 
-        .footer-links a {
-            color: var(--accent);
+        .footer-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.85rem 2rem;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: #fff;
             text-decoration: none;
             font-size: 0.875rem;
-            font-weight: 500;
-            transition: color 0.2s;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 122, 255, 0.3);
         }
 
-        .footer-links a:hover {
-            color: #60a5fa;
+        .footer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 122, 255, 0.4);
+        }
+
+        .footer-btn svg {
+            width: 18px;
+            height: 18px;
         }
 
         .footer-note {
-            margin-top: 3rem;
+            margin-top: 4rem;
             font-size: 0.7rem;
             color: var(--text-dim);
             letter-spacing: 0.02em;
@@ -321,76 +517,84 @@
         /* ── Responsive ── */
         @media (max-width: 768px) {
             .hero {
-                padding: 4rem 0 3rem;
+                padding: 5rem 0 3rem;
             }
 
             .hero-name {
-                font-size: 1.75rem;
+                font-size: 2.25rem;
             }
 
             .hero-thesis {
-                font-size: 1.05rem;
+                font-size: 1rem;
             }
 
             .metrics-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .metric {
-                text-align: left;
-                display: flex;
-                align-items: baseline;
                 gap: 1rem;
             }
 
-            .metric-number {
-                font-size: 2rem;
-                min-width: 100px;
+            .metric {
+                padding: 1.75rem 1.25rem;
             }
 
             .career-entry {
-                grid-template-columns: 1fr;
-                gap: 0.5rem;
+                padding-left: 1.5rem;
             }
 
-            .frameworks-grid {
-                grid-template-columns: 1fr;
+            .career-header {
+                flex-direction: column;
+                gap: 0.25rem;
             }
 
+            .frameworks-grid,
             .published-grid {
                 grid-template-columns: 1fr;
             }
+        }
+
+        /* ── Smooth scroll ── */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ── Selection ── */
+        ::selection {
+            background: rgba(0, 122, 255, 0.3);
+            color: #fff;
         }
     </style>
 </head>
 <body>
 
+    <!-- Ambient glow -->
+    <div class="ambient"></div>
+
     <!-- ── Hero ── -->
     <section class="hero">
         <div class="container">
-            <h1 class="hero-name">Mark Campbell</h1>
+            <div class="hero-eyebrow">Technology Executive</div>
+            <h1 class="hero-name">Mark <span>Campbell</span></h1>
             <p class="hero-thesis">
                 I build technology practices, teams, and platforms that help enterprises
                 navigate transformation at scale. Over 25 years, I've done this across
                 solutions architecture, cybersecurity, cloud, and AI adoption &mdash;
                 each time translating emerging capability into operational reality.
             </p>
-            <div class="hero-links">
-                <a href="https://www.linkedin.com/in/themarkcampbell/" target="_blank" rel="noopener">LinkedIn</a>
-                <div class="divider"></div>
-                <!-- PLACEHOLDER: Replace with actual email or contact form -->
-                <a href="mailto:mark@markcampbell.ai">Contact</a>
-            </div>
+            <a href="https://www.linkedin.com/in/themarkcampbell/" target="_blank" rel="noopener" class="hero-cta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                Connect on LinkedIn
+            </a>
         </div>
     </section>
+
+    <div class="section-divider"></div>
 
     <!-- ── Metrics ── -->
     <section class="metrics">
         <div class="container">
             <div class="metrics-grid">
                 <div class="metric">
-                    <div class="metric-number">0 &rarr; 100+</div>
+                    <div class="metric-number">0 &rarr; 50+</div>
                     <div class="metric-label">Cybersecurity practice built from zero</div>
                 </div>
                 <div class="metric">
@@ -398,56 +602,53 @@
                     <div class="metric-label">P&amp;L growth under direct ownership</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-number">100+</div>
+                    <div class="metric-number">50+</div>
                     <div class="metric-label">Enterprise GenAI production launches</div>
                 </div>
             </div>
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- ── Career Arc ── -->
     <section class="career">
         <div class="container">
             <div class="section-label">Career</div>
-
-            <div class="career-entry">
-                <div>
-                    <div class="career-company">Amazon Web Services</div>
-                    <div class="career-duration">4 years</div>
-                </div>
-                <div>
+            <div class="career-timeline">
+                <div class="career-entry">
+                    <div class="career-header">
+                        <div class="career-company">Amazon Web Services</div>
+                        <span class="career-duration">4 years</span>
+                    </div>
                     <div class="career-role">Sr. Manager, Solutions Architecture &amp; AI Adoption</div>
                     <div class="career-desc">
                         Led a team of 9 solutions architects across a <strong>$380M enterprise portfolio</strong>.
                         Transitioned to driving AI adoption with enterprise customers, launching
-                        <strong>100+ GenAI workloads</strong> into production. Operated at the intersection
+                        <strong>50+ GenAI workloads</strong> into production. Operated at the intersection
                         of technical solutioning and executive stakeholder alignment.
                     </div>
                 </div>
-            </div>
 
-            <div class="career-entry">
-                <div>
-                    <div class="career-company">Deloitte</div>
-                    <div class="career-duration">5 years</div>
-                </div>
-                <div>
+                <div class="career-entry">
+                    <div class="career-header">
+                        <div class="career-company">Deloitte</div>
+                        <span class="career-duration">5 years</span>
+                    </div>
                     <div class="career-role">Managing Director, Cybersecurity Practice</div>
                     <div class="career-desc">
-                        Built the Florida cybersecurity practice <strong>from zero to 100+ practitioners</strong>.
+                        Built the Florida cybersecurity practice <strong>from zero to 50+ practitioners</strong>.
                         Full P&amp;L ownership growing revenue from <strong>$16M to $49M</strong>.
                         Led security strategy, risk advisory, and large-scale compliance engagements
                         for Fortune 500 clients.
                     </div>
                 </div>
-            </div>
 
-            <div class="career-entry">
-                <div>
-                    <div class="career-company">Accenture</div>
-                    <div class="career-duration">15 years</div>
-                </div>
-                <div>
+                <div class="career-entry">
+                    <div class="career-header">
+                        <div class="career-company">Accenture</div>
+                        <span class="career-duration">15 years</span>
+                    </div>
                     <div class="career-role">Senior Manager, Solutions Architecture</div>
                     <div class="career-desc">
                         Enterprise technology transformation and solutions architecture across
@@ -459,72 +660,90 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- ── Strategic Frameworks ── -->
     <section class="frameworks">
         <div class="container">
             <div class="section-label">Strategic Frameworks</div>
             <div class="frameworks-grid">
-                <!-- PLACEHOLDER: Replace href with actual URLs -->
-                <a href="#" class="framework-card">
-                    <div class="framework-title">AI Progression Framework</div>
-                    <div class="framework-desc">
+                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7425282918421295104/" target="_blank" rel="noopener" class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <div class="card-title">AI Progression Framework</div>
+                    <div class="card-desc">
                         How professionals and organizations advance AI capabilities
                         from experimentation through operational maturity.
                     </div>
-                    <span class="framework-link">Explore &rarr;</span>
+                    <span class="card-link">Explore &rarr;</span>
                 </a>
-                <a href="#" class="framework-card">
-                    <div class="framework-title">Three Domains of AI</div>
-                    <div class="framework-desc">
+                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7439668123110170624/" target="_blank" rel="noopener" class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <div class="card-title">Three Domains of AI</div>
+                    <div class="card-desc">
                         A structural model for understanding where AI creates value
                         across infrastructure, application, and adoption layers.
                     </div>
-                    <span class="framework-link">Explore &rarr;</span>
-                </a>
-                <a href="#" class="framework-card">
-                    <div class="framework-title">PAI Architecture</div>
-                    <div class="framework-desc">
-                        A three-layer personal AI operating system integrating
-                        strategic planning, tactical execution, and persistent memory.
-                    </div>
-                    <span class="framework-link">Explore &rarr;</span>
+                    <span class="card-link">Explore &rarr;</span>
                 </a>
             </div>
         </div>
     </section>
+
+    <div class="section-divider"></div>
 
     <!-- ── Published Thinking ── -->
     <section class="published">
         <div class="container">
             <div class="section-label">Published Thinking</div>
             <div class="published-grid">
-                <!-- PLACEHOLDER: Replace with actual episode links and descriptions -->
-                <a href="#" class="published-card">
-                    <div class="published-tag">Video</div>
-                    <div class="published-title">Episode 1 Title</div>
-                    <div class="published-desc">
-                        Brief description of what this episode covers and the key insight.
+                <a href="https://www.youtube.com/@theeverydayaiguide" target="_blank" rel="noopener" class="card">
+                    <span class="card-tag">Video Series</span>
+                    <div class="card-title">The Everyday AI Guide</div>
+                    <div class="card-desc">
+                        For parents and professionals who want to use AI confidently without
+                        becoming a &ldquo;tech person.&rdquo; Helping non-technical people use AI to
+                        transform their daily lives &mdash; from productivity systems to teaching
+                        kids responsible AI use.
                     </div>
+                    <span class="card-link">Watch &rarr;</span>
                 </a>
-                <a href="#" class="published-card">
-                    <div class="published-tag">Video</div>
-                    <div class="published-title">Episode 2 Title</div>
-                    <div class="published-desc">
-                        Brief description of what this episode covers and the key insight.
+                <a href="https://drive.google.com/file/d/16gzIpi28Vy7WCPs-T4k22pVadDBQzYQd/view" target="_blank" rel="noopener" class="card">
+                    <span class="card-tag">Guide</span>
+                    <div class="card-title">AI Context Card</div>
+                    <div class="card-desc">
+                        A reference to get a better experience with AI. Five conversational
+                        questions that teach AI who you are.
                     </div>
+                    <span class="card-link">Download &rarr;</span>
+                </a>
+                <a href="https://drive.google.com/file/d/16XYW9zdu6XCIW9Ohg9Tb1FuNoQa_jU0D/view" target="_blank" rel="noopener" class="card">
+                    <span class="card-tag">Guide</span>
+                    <div class="card-title">AI Preboarding Guide</div>
+                    <div class="card-desc">
+                        A walkthrough for setting up the foundations for your Second Brain
+                        as a practical introduction to AI.
+                    </div>
+                    <span class="card-link">Download &rarr;</span>
                 </a>
             </div>
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- ── Footer ── -->
     <footer class="footer">
         <div class="container">
-            <p class="footer-cta">Building something in cloud, AI, or enterprise transformation?</p>
-            <div class="footer-links">
-                <a href="https://www.linkedin.com/in/themarkcampbell/" target="_blank" rel="noopener">Connect on LinkedIn</a>
-                <a href="mailto:mark@markcampbell.ai">Get in touch</a>
-            </div>
+            <p class="footer-cta">Let's build something.</p>
+            <p class="footer-sub">Cloud, AI, security, or enterprise transformation.</p>
+            <a href="https://www.linkedin.com/in/themarkcampbell/" target="_blank" rel="noopener" class="footer-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                Connect on LinkedIn
+            </a>
             <p class="footer-note">&copy; 2026 Mark Campbell</p>
         </div>
     </footer>
