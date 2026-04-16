@@ -4,6 +4,7 @@
 > **Live:** https://markcampbell.ai
 
 ## Project Links
+- **Notion:** https://www.notion.so/markcampbell-ai-Personal-Website-32f16d54e56881b48318c6263088c2cc
 - **Drive:** My Drive/Claude Code Projects/markcampbell.ai/
 - **GitHub:** https://github.com/macsoup-max/markcampbell-ai
 - **Domain:** Namecheap (macsoup@gmail.com), expires 2028-03-18
